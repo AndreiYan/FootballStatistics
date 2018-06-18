@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     int totalShotsA = 0;
     int totalShotsB = 0;
     int gameShots = 0;
-    int possessionTeamA = 0;
-    int possessionTeamB = 0;
 
     Team teamA = new Team();
     Team teamB = new Team();
@@ -53,19 +51,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Displays Possession for Team A and B.
-     */
-    public void displayPossessionA(int possessionTeamA) {
-        TextView scoreView = (TextView) findViewById(R.id.possession_team_a);
-        scoreView.setText(String.valueOf(possessionTeamA));
-    }
-    public void displayPossessionB(int possessionTeamB) {
-        TextView scoreView = (TextView) findViewById(R.id.possession_team_b);
-        scoreView.setText(String.valueOf(possessionTeamB));
-    }
-
-
-    /**
      * Displays the given Shots On Target for Team A and B.
      */
     public void displayshotsOnTargetA(int shotsOnTargetA) {
@@ -91,58 +76,15 @@ public class MainActivity extends AppCompatActivity {
         displayPossessionA(possessionTeamA);
     }
 
-    //*Button shots on target and possession
+    //*Button shots on target
     public void ShotsOnTargetA(View view){
 
         shotsOnTargetA=teamA.shotsOnTargetA(shotsOnTargetA);
-        possessionTeamA = teamA.possessionA(shotsOnTargetA,ShotsA,totalShotsB);
-
         displayshotsOnTargetA(shotsOnTargetA);
-        displayPossessionA(possessionTeamA);
 
     }
 
-    class Team{
-        int shotsOnTargetA = 0;
-        //* Shots on target TeamA
-        public int shotsOnTargetA(int shotsOnTargetA){
-            shotsOnTargetA = shotsOnTargetA + 1;
-            return shotsOnTargetA;
-        }
-        //*Possession Team A
-        public int possessionA (int shotsOnTargetA, int ShotsA, int totalShotsB ){
-            int totalShotsA = shotsOnTargetA + ShotsA;
-            int gameShots = totalShotsA +totalShotsB;
-            int possessionTeamA = (totalShotsA/gameShots)*100;
-            return possessionTeamA;
-        }
-        //*BUTTON Shots for Team A/
-        public int ShotsA (int ShotsA){
-            ShotsA = ShotsA + 1;
-            return ShotsA;
-        }
-        //*BUTTON Shots for Team B
-        public int ShotsB (int ShotsB){
-            ShotsB = ShotsB + 1;
-            return ShotsB;
-        }
-        //*Possession Team B
-        public int possessionB (int shotsOnTargetB, int ShotsB, int totalShotsA ){
-            int totalShotsB = shotsOnTargetB + ShotsB;
-            int gameShots = totalShotsA +totalShotsB;
-            int possessionTeamB = (totalShotsB/gameShots)*100;
-            return possessionTeamB;
-        }
-        //* Shots on target TeamB
-        public int shotsOnTargetB(int shotsOnTargetB){
-            shotsOnTargetB = shotsOnTargetB + 1;
-            return shotsOnTargetB;
-        }
-    }
-
-
-
-    //*BUTTON Goal for Team B/
+     //*BUTTON Goal for Team B/
     public void GoalB(View view){
         scoreTeamB = scoreTeamB + 1;
         displayForTeamB(scoreTeamB);
@@ -157,10 +99,8 @@ public class MainActivity extends AppCompatActivity {
     //*BUTTON Shots on Target for Team B/
     public void shotsOnTargetB(View view) {
         shotsOnTargetB = teamB.shotsOnTargetB(shotsOnTargetB);
-        possessionTeamB = teamB.possessionB(shotsOnTargetB, ShotsB, totalShotsA);
-
         displayshotsOnTargetB(shotsOnTargetB);
-        displayPossessionB(possessionTeamB);
+       
     }
 
 
@@ -174,16 +114,12 @@ public class MainActivity extends AppCompatActivity {
         ShotsB = 0;
         shotsOnTargetA = 0;
         shotsOnTargetB = 0;
-        possessionTeamA = 0;
-        possessionTeamB = 0;
         displayForTeamA(scoreTeamA);
         displayForTeamB(scoreTeamB);
         displayShotsForTeamA(ShotsA);
         displayShotsForTeamB(ShotsB);
         displayshotsOnTargetA(shotsOnTargetA);
         displayshotsOnTargetB(shotsOnTargetB);
-        displayPossessionA(possessionTeamA);
-        displayPossessionB(possessionTeamB);
 
     }
 
