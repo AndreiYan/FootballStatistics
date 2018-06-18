@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FootballStatistics</string>
+    <string name="team1">Home</string>
+    <string name="team2">Guest</string>
+    <string name="buttonGoalTeam1">Goal</string>
+    <string name="buttonGoalTeam2">Goal</string>
+    <string name="buttonShotTeam1">Shots</string>
+    <string name="buttonShotTeam2">Shots</string>
+    <string name="buttonShotsonTargetTeam1">Shots on target</string>
+    <string name="buttonShotsonTargetTeam2">Shots on target</string>
+    <string name="buttonReset">Reset</string>
+    <string name="StatsShots">Shots</string>
+    <string name="statsShotsOnTarget">Shots on Target</string>
 </resources>
