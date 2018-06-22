@@ -2,12 +2,8 @@ package com.example.android.footballstatistics;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
-
-import com.example.android.footballstatistics.R;
-
 
 public class MainActivity extends AppCompatActivity {
     int scoreTeamA = 0;
@@ -16,17 +12,14 @@ public class MainActivity extends AppCompatActivity {
     int ShotsB = 0;
     int shotsOnTargetA = 0;
     int shotsOnTargetB = 0;
-    int totalShotsA = 0;
-    int totalShotsB = 0;
-    int gameShots = 0;
 
-    Team teamA = new Team();
-    Team teamB = new Team();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
     /**
      * Displays the given score for Team A.
      */
@@ -34,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreView = (TextView) findViewById(R.id.team_a_score);
         scoreView.setText(String.valueOf(score));
     }
+
     public void displayForTeamB(int score) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_score);
         scoreView.setText(String.valueOf(score));
     }
+
     /**
      * Displays the given Shots for Team A and B.
      */
@@ -45,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreView = (TextView) findViewById(R.id.team_a_shots);
         scoreView.setText(String.valueOf(ShotsA));
     }
+
     public void displayShotsForTeamB(int ShotsB) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_shots);
         scoreView.setText(String.valueOf(ShotsB));
@@ -57,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreView = (TextView) findViewById(R.id.team_a_shots_on_target);
         scoreView.setText(String.valueOf(shotsOnTargetA));
     }
+
     public void displayshotsOnTargetB(int shotsOnTargetB) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_shots_on_target);
         scoreView.setText(String.valueOf(shotsOnTargetB));
@@ -64,50 +61,44 @@ public class MainActivity extends AppCompatActivity {
 
 
     //*BUTTON Goal for Team A/
-    public void GoalA(View view){
+    public void GoalA(View view) {
         scoreTeamA = scoreTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
+
     //*BUTTON Shots for Team A/
-    public void ShotsA(View view){
-        ShotsA = teamA.ShotsA(ShotsA);
-        possessionTeamA = teamA.possessionA(shotsOnTargetA,ShotsA,totalShotsB);
+    public void ShotsA(View view) {
+        ShotsA = ShotsA + 1;
         displayShotsForTeamA(ShotsA);
-        displayPossessionA(possessionTeamA);
     }
 
-    //*Button shots on target
-    public void ShotsOnTargetA(View view){
-
-        shotsOnTargetA=teamA.shotsOnTargetA(shotsOnTargetA);
+    //*Button shots on target and possession
+    public void ShotsOnTargetA(View view) {
+        shotsOnTargetA = shotsOnTargetA + 1;
         displayshotsOnTargetA(shotsOnTargetA);
-
     }
 
-     //*BUTTON Goal for Team B/
-    public void GoalB(View view){
+    //*BUTTON Goal for Team B/
+    public void GoalB(View view) {
         scoreTeamB = scoreTeamB + 1;
         displayForTeamB(scoreTeamB);
     }
+
     //*BUTTON Shots for Team B/
-    public void ShotsB(View view){
-        ShotsB = teamB.ShotsB(ShotsB);
-        possessionTeamB = teamB.possessionB(shotsOnTargetB,ShotsB,totalShotsA);
+    public void ShotsB(View view) {
+        ShotsB = ShotsB + 1;
         displayShotsForTeamB(ShotsB);
-        displayPossessionB(possessionTeamB);
     }
+
     //*BUTTON Shots on Target for Team B/
     public void shotsOnTargetB(View view) {
-        shotsOnTargetB = teamB.shotsOnTargetB(shotsOnTargetB);
+        shotsOnTargetB = shotsOnTargetB + 1;
         displayshotsOnTargetB(shotsOnTargetB);
-       
     }
-
-
 
 
     //* ResetButton
-    public void  Reset(View view){
+    public void Reset(View view) {
         scoreTeamA = 0;
         scoreTeamB = 0;
         ShotsA = 0;
